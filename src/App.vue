@@ -1,11 +1,20 @@
 <template>
   <div class="head">
-    <el-button>123</el-button>
+    <el-button :icon="Search"/>
+    <el-button type="primary" :icon="Edit">123</el-button>
+    <el-button type="success" :icon="Check"/>
+    <el-button type="info" :icon="Message"/>
+    <el-button type="warning" :icon="Star"/>
+    <el-button type="danger" :icon="Delete"/>
+    <div class="example-pagination-block">
+      <div class="example-demonstration">When you have few pages</div>
+      <el-pagination layout="prev, pager, next" :total="50" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
+import {Search, Edit, Check, Message, Star, Delete} from '@element-plus/icons-vue'
 
 </script>
 
