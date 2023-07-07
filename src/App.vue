@@ -10,11 +10,14 @@
       <div class="example-demonstration">When you have few pages</div>
       <el-pagination layout="prev, pager, next" :total="50" />
     </div>
+    <svgIcon name="phone" color="pink" width="100px" hegiht="100px"></svgIcon>
   </div>
 </template>
 
 <script setup lang="ts">
 import {Search, Edit, Check, Message, Star, Delete} from '@element-plus/icons-vue'
+import svgIcon from './components/svgIcon/index.vue'
+
 
 </script>
 
