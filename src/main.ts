@@ -9,11 +9,15 @@ import App from './App.vue'
 import 'virtual:svg-icons-register'
 
 // console.log(import.meta.env)
+//@ts-ignore
+import globalComponent from '@/components/index.ts';
 
+import '@/styles/index.scss'
 
 createApp(App)
     .use(ElementPlus, {
         locale: zhCn
     })
+    .use(globalComponent)
     .mount('#app')
 
