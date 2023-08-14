@@ -11,9 +11,9 @@ const allGlobalComponent = {
 
 export default {
     // 务必叫做 install 方法
-    install(App){
-        Object.keys(allGlobalComponent).forEach(item=>{
-            App.component(item,allGlobalComponent[item])
+    install(App) {
+        Object.keys(allGlobalComponent).forEach(item => {
+            App.component(item, allGlobalComponent[item])
         })
     }
 }
