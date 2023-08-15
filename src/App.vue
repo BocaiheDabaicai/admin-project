@@ -1,18 +1,19 @@
 <template>
   <div class="head">
-    <el-button :icon="Search"/>
-    <el-button type="primary" :icon="Edit">123</el-button>
-    <el-button type="success" :icon="Check"/>
-    <el-button type="info" :icon="Message"/>
-    <el-button type="warning" :icon="Star"/>
-    <el-button type="danger" :icon="Delete"/>
-    <div class="example-pagination-block">
-      <div class="example-demonstration">When you have few pages</div>
-      <el-pagination layout="prev, pager, next" :total="50"/>
-    </div>
-    <svgIcon name="phone" color="pink" width="100px" hegiht="100px"></svgIcon>
-    <h2>1234</h2>
-    <h2>请求测试</h2>
+<!--    <el-button :icon="Search"/>-->
+<!--    <el-button type="primary" :icon="Edit">123</el-button>-->
+<!--    <el-button type="success" :icon="Check"/>-->
+<!--    <el-button type="info" :icon="Message"/>-->
+<!--    <el-button type="warning" :icon="Star"/>-->
+<!--    <el-button type="danger" :icon="Delete"/>-->
+<!--    <div class="example-pagination-block">-->
+<!--      <div class="example-demonstration">When you have few pages</div>-->
+<!--      <el-pagination layout="prev, pager, next" :total="50"/>-->
+<!--    </div>-->
+<!--    <svgIcon name="phone" color="pink" width="100px" hegiht="100px"></svgIcon>-->
+<!--    <h2>1234</h2>-->
+<!--    <h2>请求测试</h2>-->
+    <router-view></router-view>
   </div>
 </template>
 

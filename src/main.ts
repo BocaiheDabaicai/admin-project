@@ -15,6 +15,7 @@ import globalComponent from '@/components/index.ts';
 import '@/styles/index.scss'
 
 import axios from "axios";
+import router from './router'
 
 axios({
     url:'/api/user/login',
@@ -26,11 +27,11 @@ axios({
 })
 
 
-
 createApp(App)
     .use(ElementPlus, {
         locale: zhCn
     })
     .use(globalComponent)
+    .use(router)
     .mount('#app')
 
