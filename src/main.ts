@@ -14,17 +14,9 @@ import globalComponent from '@/components/index.ts';
 
 import '@/styles/index.scss'
 
-import axios from "axios";
 import router from './router'
 
-axios({
-    url:'/api/user/login',
-    method:'post',
-    data:{
-        username:'admin',
-        password:'111111'
-    }
-})
+import pinia from "@/store";
 
 
 createApp(App)
@@ -33,5 +25,6 @@ createApp(App)
     })
     .use(globalComponent)
     .use(router)
+    .use(pinia)
     .mount('#app')
 

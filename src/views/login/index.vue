@@ -1,7 +1,7 @@
 <template>
 <div class="login-container">
   <el-row>
-    <el-col :span="12" :xs="0">123</el-col>
+    <el-col :span="12" :xs="0"></el-col>
     <el-col :span="12" :xs="24">
       <el-form class="login-form">
         <h1>Hello!</h1>
@@ -13,7 +13,7 @@
           <el-input class="form-input" :prefix-icon="Lock" type="password" v-model="loginFrom.password" show-password></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button class="form-button" type="primary">登录</el-button>
+          <el-button class="form-button" type="primary" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -24,11 +24,19 @@
 <script setup lang="ts">
 import {User,Lock} from '@element-plus/icons-vue'
 import {reactive} from "vue";
+// 引入用户相关的仓库
+import useUserStore from '@/store/modules/user';
+
+let useStore = useUserStore();
 
 let loginFrom = reactive({
   username:'',
   password:''
 })
+
+const login = () => {
+  useStore.userLogin(loginFrom)
+}
 
 </script>
 

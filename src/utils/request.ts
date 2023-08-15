@@ -19,7 +19,7 @@ request.interceptors.request.use((config) => {
 request.interceptors.response.use((response) => {
 
 
-    ElMessage.success('请求成功')
+    // ElMessage.success('请求成功')
 
     // 拿到简化数据
     return response.data
