@@ -15,14 +15,15 @@ let useUserStore = defineStore('User', {
     actions: {
         async userLogin(data: loginForm) {
             // 登录请求
-            let result = await reqLogin(data)
+            let result:any = await reqLogin(data)
             if(result.code === 200){
                 this.token = result.token
                 console.log(result.data.token)
                 // 本地持久化存储
                 localStorage.setItem("TOKEN",result.data.token)
+                return 'ok'
             }else{
-
+                return Promise.reject(new Error(result.data.message));
             }
             // console.log(result)
         }
