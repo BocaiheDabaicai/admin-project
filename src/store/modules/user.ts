@@ -3,24 +3,28 @@ import {defineStore} from 'pinia';
 //引入接口
 import {reqLogin} from '@/api/user'
 // 引入数据类型
-import type {loginForm} from "@/api/user/type.ts";
+import type {loginForm, loginResponseData} from "@/api/user/type.ts";
+import type {UserState} from "@/store/modules/types/type.ts";
+// 引入本地存储化方法
+import {GET_TOKEN, SET_TOKEN} from "@/utils/token.ts";
+
 // 创建用户小仓库
 let useUserStore = defineStore('User', {
-    state: () => {
+    state: ():UserState => {
         return {
-            token:localStorage.getItem("TOKEN"),//用户唯一标识
+            token:GET_TOKEN(),//用户唯一标识
         }
     },
     // 异步|逻辑的地方
     actions: {
         async userLogin(data: loginForm) {
             // 登录请求
-            let result:any = await reqLogin(data)
+            let result:loginResponseData = await reqLogin(data)
             if(result.code === 200){
                 this.token = result.token
                 console.log(result.data.token)
                 // 本地持久化存储
-                localStorage.setItem("TOKEN",result.data.token)
+                SET_TOKEN((result.data.token as string))
                 return 'ok'
             }else{
                 return Promise.reject(new Error(result.data.message));
