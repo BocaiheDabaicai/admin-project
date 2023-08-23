@@ -71,15 +71,35 @@ const login = async () => {
   // console.log(login)
 }
 
+const validatorUserName = (rule:any,value:any,callback:any) => {
+  // 校验用户名的规则
+  if(value.length >= 5){
+    callback();
+  }else {
+    callback(new Error('账号长度至少五位'))
+  }
+}
+
+const validatorPassWord = (rule:any,value:any,callback:any) => {
+  // 校验密码的规则
+  if(value.length >= 5){
+    callback();
+  }else {
+    callback(new Error('密码长度至少五位'))
+  }
+}
+
 // 定义表单规则对象
 const rules = {
   username: [
-    {required: true, message: '请输入用户名', trigger: 'blur'},
-    {required: true, min: 5, max: 12, message: '请确认账号长度保持在5到12位', trigger: 'blur'}
+    // {required: true, message: '请输入用户名', trigger: 'blur'},
+    // {required: true, min: 5, max: 12, message: '请确认账号长度保持在5到12位', trigger: 'blur'}
+    {trigger:'change',validator:validatorUserName}
   ],
   password: [
-    {required: true, message: '请输入密码', trigger: 'blur'},
-    {required: true, min: 6, message: '密码长度至少6位', trigger: 'blur'}
+    // {required: true, message: '请输入密码', trigger: 'blur'},
+    // {required: true, min: 6, message: '密码长度至少6位', trigger: 'blur'}
+    {trigger:'change',validator:validatorPassWord}
   ]
 }
 

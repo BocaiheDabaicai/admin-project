@@ -2,3 +2,15 @@
 
 
 // 设置全局变量
+
+// 滚动条
+::-webkit-scrollbar{
+  width: 15px;
+}
+::-webkit-scrollbar-track{
+  background-color: #3ba8f5;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #F5883B;
+  border-radius:10px;
+}
