@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" v-show="!logoHidden">
+  <div class="logo" v-show="logoShow">
     <img :src="src" alt="">
     <p>{{ title }}</p>
   </div>
@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import setting from '/src/setting.ts'
 
-const {src,title,logoHidden} = setting
+const {src,title,logoShow} = setting
 
 
 </script>

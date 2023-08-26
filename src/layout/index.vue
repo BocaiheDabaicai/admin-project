@@ -5,29 +5,13 @@
       <el-scrollbar class="scrollbar">
         <el-menu
             default-active="1"
-            class="el-menu-vertical-demo"
+            class="el-menu-self"
             background-color="#1a1b1e"
             text-color="white"
             active-text-color="#3ba7f3"
             :collapse="false"
         >
-          <el-menu-item index="1">
-            <el-icon>1</el-icon>
-            <span>首页</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <el-icon>2</el-icon>
-            <span>数据大屏</span>
-          </el-menu-item>
-          <el-sub-menu index="1">
-            <template #title>
-              <el-icon>3</el-icon>
-              <span>Navigator One</span>
-            </template>
-              <el-menu-item index="1-1">item one</el-menu-item>
-              <el-menu-item index="1-2">item two</el-menu-item>
-              <el-menu-item index="1-3">item three</el-menu-item>
-          </el-sub-menu>
+          <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
@@ -42,7 +26,12 @@
 
 <script setup lang="ts">
 import Logo from './logo/index.vue'
+import Menu from './menu/index.vue'
 
+// 获取用户的仓库
+import useUserStore from "@/store/modules/user.ts";
+
+let userStore = useUserStore();
 
 </script>
 
@@ -61,6 +50,11 @@ import Logo from './logo/index.vue'
     .scrollbar{
       width: 100%;
       height: calc(100vh - $base-menu-logo-height);
+
+      .el-menu-self{
+        border-right: 1px solid #141517;
+      }
+
     }
 
   }

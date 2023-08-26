@@ -2,5 +2,5 @@
 export default {
     title:'练习平台',
     src:'../public/logo.png',
-    logoHidden:false
+    logoShow:true
 }
