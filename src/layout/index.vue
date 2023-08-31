@@ -4,7 +4,7 @@
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
         <el-menu
-            default-active="1"
+            :default-active="route.path"
             class="el-menu-self"
             background-color="#1a1b1e"
             text-color="white"
@@ -15,7 +15,9 @@
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="layout-topper">顶部</div>
+    <div class="layout-topper">
+      <Tabber></Tabber>
+    </div>
     <div class="layout-main">
       <Main></Main>
     </div>
@@ -23,15 +25,20 @@
 </template>
 
 <script setup lang="ts">
+// 路由引入
+import {useRoute} from "vue-router"
 // 组件引入
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
 import Main from './main/index.vue'
+import Tabber from './tabber/index.vue'
 
 // 获取用户的仓库
 import useUserStore from "@/store/modules/user.ts";
 
 let userStore = useUserStore();
+let route = useRoute();
+
 
 </script>
 
