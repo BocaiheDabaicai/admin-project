@@ -1,6 +1,6 @@
 <template>
   <div class="layout-container">
-    <div class="layout-slider">
+    <div class="layout-slider" :class="{fold:layoutSettingStore.fold}">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
         <el-menu
@@ -9,16 +9,16 @@
             background-color="#1a1b1e"
             text-color="white"
             active-text-color="#3ba7f3"
-            :collapse="false"
+            :collapse="layoutSettingStore.fold"
         >
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="layout-topper">
+    <div class="layout-topper" :class="{fold:layoutSettingStore.fold}">
       <Tabber></Tabber>
     </div>
-    <div class="layout-main">
+    <div class="layout-main" :class="{fold:layoutSettingStore.fold}">
       <Main></Main>
     </div>
   </div>
@@ -35,8 +35,12 @@ import Tabber from './tabber/index.vue'
 
 // 获取用户的仓库
 import useUserStore from "@/store/modules/user.ts";
+// 控制折叠的仓库
+import useLayoutSettingStore from "@/store/modules/setting.ts";
 
 let userStore = useUserStore();
+let layoutSettingStore = useLayoutSettingStore()
+
 let route = useRoute();
 
 
@@ -53,6 +57,7 @@ let route = useRoute();
     width: $base-menu-width;
     height: 100vh;
     background-color: #1a1b1e;
+    transition:0.5s all;
 
     .scrollbar {
       width: 100%;
@@ -64,6 +69,10 @@ let route = useRoute();
 
     }
 
+    &.fold{
+      width:$base-menu-min-width
+    }
+
   }
 
   .layout-topper {
@@ -73,6 +82,12 @@ let route = useRoute();
     position: fixed;
     top: 0;
     left: $base-menu-width;
+    transition:0.5s all;
+
+    &.fold{
+      width: calc(100% - $base-menu-min-width);
+      left: $base-menu-min-width;
+    }
   }
 
   .layout-main {
@@ -84,6 +99,12 @@ let route = useRoute();
     top: $base-topper-height;
     padding: 20px;
     overflow: auto;
+    transition:0.5s all;
+
+    &.fold{
+      width: calc(100% - $base-menu-min-width);
+      left: $base-menu-min-width;
+    }
   }
 
 }

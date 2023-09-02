@@ -1,14 +1,17 @@
 <template>
   <div class="logo" v-show="logoShow">
     <img :src="src" alt="">
-    <p>{{ title }}</p>
+    <span v-show="!layoutSettingStore.fold">{{title }}</span>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Logo">
 import setting from '/src/setting.ts'
+import useLayoutSettingStore from "@/store/modules/setting.ts";
 
 const {src,title,logoShow} = setting
+
+let layoutSettingStore = useLayoutSettingStore()
 
 
 </script>
@@ -18,17 +21,18 @@ const {src,title,logoShow} = setting
   width: 100%;
   height:$base-menu-logo-height;
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px;
+  padding: 12px;
   background-color: #141517;
-
+  transition: 0.5s all;
 
   img{
     width: 40px;
   }
 
-  p{
+  span{
     font-size: $base-logo-title-fontSize;
     margin-left: 20px;
   }

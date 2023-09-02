@@ -26,7 +26,7 @@ export  const constantRoutes = [
             }
         ],
         meta:{
-            title:'layout',
+            title:'',
             show:true
         }
     },
@@ -34,6 +34,7 @@ export  const constantRoutes = [
         path:'/right',
         component:() => import('@/layout/index.vue'),
         name:'Right',
+        redirect:'/right/user',
         children:[
             {
                 path:'/right/user',
@@ -76,6 +77,7 @@ export  const constantRoutes = [
         path:'/good',
         component:()=> import('@/layout/index.vue'),
         name:'Good',
+        redirect:'/good/attributes',
         children:[
             {
                 path:'/good/attributes',

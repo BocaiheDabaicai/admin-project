@@ -38,10 +38,10 @@
 </template>
 
 <script setup lang="ts" name="Menu">
+
 defineProps(['menuList'])
 
 import {useRouter} from 'vue-router';
-
 
 const router = useRouter();
 
