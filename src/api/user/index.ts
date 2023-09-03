@@ -4,7 +4,7 @@ import type{loginForm,loginResponseData,userResponseData} from "@/api/user/type.
 
 enum API {
     LOGIN_URL = '/user/login',
-    USERINFO_URL = '/user/login'
+    USERINFO_URL = '/user/info'
 }
 
 // 暴露请求函数

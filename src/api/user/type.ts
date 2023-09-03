@@ -12,7 +12,8 @@ interface dataType{
 
 export interface loginResponseData{
     code:number,
-    data:dataType
+    data:dataType,
+    token:string|null
 }
 
 interface userinfo{

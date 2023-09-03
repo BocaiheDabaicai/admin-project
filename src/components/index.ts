@@ -8,7 +8,6 @@ const allGlobalComponent: any = {
     SvgIcon
 }
 
-console.log(ElementPlusIconsVue)
 export default {
     // 务必叫做 install 方法
     install(App: any) {

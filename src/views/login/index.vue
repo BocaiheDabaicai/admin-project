@@ -27,13 +27,14 @@ import {User, Lock} from '@element-plus/icons-vue'
 import {reactive, ref} from "vue";
 // 引入用户相关的仓库
 import useUserStore from '@/store/modules/user';
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {ElNotification} from "element-plus";
 // 引入时间端函数
 import {getTime} from "@/utils/time.ts";
 
 let useStore = useUserStore();
 let $router = useRouter();
+let $route = useRoute();
 
 let loadRef = ref(false);
 let loginFormRef = ref();
@@ -52,7 +53,8 @@ const login = async () => {
 
   try {
     await useStore.userLogin(loginForm)
-    $router.push('/')
+    let redirect = $route.query.redirect
+    $router.push({path:redirect||'/'})
     ElNotification({
       type: 'success',
       title: `Hi,${getTime()}好呀！`,
