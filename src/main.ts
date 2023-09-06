@@ -26,6 +26,8 @@ import router from './router'
 import pinia from "@/store";
 // 引入动画样式
 import 'animate.css'
+// 引入全局守卫
+import './permission.ts'
 
 createApp(App)
     .use(ElementPlus, {
