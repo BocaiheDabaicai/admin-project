@@ -41,6 +41,9 @@ let useUserStore = defineStore('User', {
             if(userInfo.code === 200) {
                 this.name = userInfo.data.checkUser.username
                 this.avatar = userInfo.data.checkUser.avatar
+                return 'ok'
+            }else{
+                return Promise.reject('获取用户信息失败')
             }
         },
         logout(){
