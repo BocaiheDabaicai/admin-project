@@ -12,7 +12,7 @@
     </span>
     <template #dropdown>
       <el-dropdown-menu style="background-color: #1a1b1e;" >
-        <el-dropdown-item><span style="color: #d44c5a" @click="logout">退出登录</span></el-dropdown-item>
+        <el-dropdown-item><span style="color: #4cb0d4" @click="logout">退出登录</span></el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -41,10 +41,10 @@ const fullScreen = function () {
   else document.exitFullscreen()
 }
 
-const logout = function(){
+const logout = async function(){
   // 退出登录
-  userStore.logout()
-  router.push({path:'/login',query:{redirect:route.path}})
+  await userStore.logout()
+  await router.push({path:'/login',query:{redirect:route.path}})
 }
 </script>
 
