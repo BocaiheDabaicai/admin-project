@@ -3,7 +3,7 @@ import {defineStore} from 'pinia';
 //引入接口
 import {reqLogin, reqUserInfo, reqLogout} from '@/api/user'
 // 引入数据类型
-// import type {loginForm, loginResponseData} from "@/api/user/type.ts";
+import type {loginFormData, loginResponseData, userInfoResponseData} from "@/api/user/type.ts";
 import type {UserState} from "@/store/modules/types/type.ts";
 // 引入本地存储化方法
 import {GET_TOKEN, REMOVE_TOKEN, SET_TOKEN} from "@/utils/token.ts";
@@ -22,9 +22,9 @@ let useUserStore = defineStore('User', {
     },
     // 异步|逻辑的地方
     actions: {
-        async userLogin(data: any) {
+        async userLogin(data: loginFormData) {
             // 登录请求
-            let result: any = await reqLogin(data)
+            let result: loginResponseData = await reqLogin(data)
 
             if (result.code === 200) {
                 this.token = result.data
@@ -38,7 +38,7 @@ let useUserStore = defineStore('User', {
         },
         async userInfo() {
             // 获取用户信息
-            let userInfo = await reqUserInfo()
+            let userInfo: userInfoResponseData = await reqUserInfo()
             console.log(userInfo)
             if (userInfo.code === 200) {
                 this.name = userInfo.data.name
@@ -49,16 +49,16 @@ let useUserStore = defineStore('User', {
             }
         },
         async logout() {
-            let result = await reqLogout()
+            let result: any = await reqLogout()
             console.log(result)
-            if(result.code === 200){
+            if (result.code === 200) {
                 // 退出用户登录
                 this.name = ''
                 this.token = ''
                 this.avatar = ''
                 REMOVE_TOKEN()
                 return 'ok';
-            }else{
+            } else {
                 return Promise.reject(new Error(result.message))
             }
 
