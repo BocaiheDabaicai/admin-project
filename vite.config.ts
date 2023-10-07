@@ -11,6 +11,7 @@ export default defineConfig(({command, mode}) => {
     // 获取对应环境下的文件
     let env = loadEnv(mode, process.cwd())
     console.log(env)
+    console.log(env)
     console.log(env.VITE_APP_BASE_API)
     return {
         plugins: [
@@ -45,9 +46,12 @@ export default defineConfig(({command, mode}) => {
         server: {
             proxy: {
                 [env.VITE_APP_BASE_API]: {
+                    //获取数据的服务器地址设置
                     target: env.VITE_SERVE,
+                    //需要代理跨域
                     changeOrigin: true,
-                    rewrite: (path) => path.replace(/^\/api/, '')
+                    //路径重写
+                    rewrite: (path) => path.replace(/^\/api/, ''),
                 }
             }
         }
